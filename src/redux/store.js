@@ -1,7 +1,7 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { combineReducers } from "redux";
+import { createSlice } from "@reduxjs/toolkit";
 
 // Початковий стан для filters
 const initialFiltersState = {
@@ -37,7 +37,7 @@ const filtersSlice = createSlice({
   },
 });
 
-// Об'єднання редукторів за допомогою combineReducers
+// Об'єднання редукторів
 const rootReducer = combineReducers({
   contacts: contactsSlice.reducer,
   filters: filtersSlice.reducer,
@@ -50,12 +50,16 @@ const persistConfig = {
   whitelist: ["contacts"],
 };
 
-// Створення persistReducer для застосування конфігурації до редуктора слайса контактів
+// Створення persistReducer для застосування конфігурації до редуктора
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Створення store та persistor
+// Створення store
 export const store = configureStore({
   reducer: persistedReducer,
 });
 
+// Створення persistor
 export const persistor = persistStore(store);
+
+// Експортуємо тільки store
+export default store;

@@ -11,14 +11,18 @@ const ContactList = () => {
   };
 
   return (
-    <ul>
-      {contacts.map((contact) => (
-        <li key={contact.id}>
-          {contact.name} - {contact.phone}
-          <button onClick={() => handleDelete(contact.id)}>Delete</button>
-        </li>
-      ))}
-    </ul>
+    <div>
+      {/* Список контактів */}
+      <ul>
+        {/* Рендер всіх контактів */}
+        {contacts.map((contact, index) => (
+          <li key={index}>
+            {contact.name} - {contact.phone}
+            <button onClick={() => handleDelete(contact.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

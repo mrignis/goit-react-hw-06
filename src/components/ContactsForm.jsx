@@ -6,10 +6,17 @@ const ContactsForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [id, setId] = useState(1); // Початкове значення лічильника
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addContact({ name, phone }));
+    // Перевірка на заповнення полів ім'я та номер телефону
+    if (!name || !phone) {
+      alert("Please fill in all fields"); // Повідомлення про помилку
+      return; // Відміна дії
+    }
+    dispatch(addContact({ id, name, phone }));
+    setId(id + 1);
     setName("");
     setPhone("");
   };

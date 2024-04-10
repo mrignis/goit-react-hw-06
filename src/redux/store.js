@@ -54,12 +54,16 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Створення store
-export const store = configureStore({
+const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 // Створення persistor
 export const persistor = persistStore(store);
 
-// Експортуємо тільки store
+// Експортуємо тільки store як default
 export default store;

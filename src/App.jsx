@@ -1,11 +1,14 @@
+// App.jsx
+
 import React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/es/integration/react";
 import store, { persistor } from "./redux/store"; // Виправлено тут
+import "./App.css"; // Підключення файлу стилів
 
-import ContactsForm from "./components/ContactsForm";
-import ContactList from "./components/ContactList";
-import SearchBox from "./components/SearchBox";
+import ContactsForm from "./components/ContactsForm/ContactsForm";
+import ContactList from "./components/ContactList/ContactList";
+import SearchBox from "./components/SearchBox/SearchBox";
 
 function App() {
   return (
@@ -13,9 +16,11 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <div className="app">
           <h1>Книга контактів</h1>
-          <ContactsForm />
-          <SearchBox />
-          <ContactList />
+          <div className="container">
+            <ContactsForm />
+            <SearchBox />
+            <ContactList />
+          </div>
         </div>
       </PersistGate>
     </Provider>

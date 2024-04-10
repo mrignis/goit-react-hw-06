@@ -1,6 +1,9 @@
+// ContactsForm.jsx
+
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addContact } from "../redux/contactsSlice";
+import { addContact } from "../../redux/contactsSlice";
+import "./ContactsForm.css"; // Підключення файлу стилів
 
 const ContactsForm = () => {
   const dispatch = useDispatch();
@@ -15,6 +18,8 @@ const ContactsForm = () => {
       alert("Please fill in all fields"); // Повідомлення про помилку
       return; // Відміна дії
     }
+    const nextId = id <= 200 ? id : 1;
+
     dispatch(addContact({ id, name, phone }));
     setId(id + 1);
     setName("");
@@ -22,21 +27,23 @@ const ContactsForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-      />
-      <input
-        type="text"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        placeholder="Phone"
-      />
-      <button type="submit">Add Contact</button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+        />
+        <input
+          type="text"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Phone"
+        />
+        <button type="submit">Add Contact</button>
+      </form>
+    </div>
   );
 };
 

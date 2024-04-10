@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectContacts, deleteContact } from "../redux/contactsSlice";
+import { selectContacts, deleteContact } from "../../redux/contactsSlice";
+import "./ContactList.css"; // Шлях до вашого CSS файлу
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -11,14 +12,18 @@ const ContactList = () => {
   };
 
   return (
-    <div>
+    <div className="contact-list">
       {/* Список контактів */}
       <ul>
         {/* Рендер всіх контактів */}
         {contacts.map((contact, index) => (
-          <li key={index}>
-            {contact.name} - {contact.phone}
-            <button onClick={() => handleDelete(contact.id)}>Delete</button>
+          <li key={index} className="contact-item">
+            <div className="contact-info">
+              {contact.name} - {contact.phone}
+            </div>
+            <div className="contact-actions">
+              <button onClick={() => handleDelete(contact.id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>

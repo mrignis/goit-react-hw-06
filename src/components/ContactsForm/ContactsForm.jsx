@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
+import { ImAccessibility } from "react-icons/im";
 import "./ContactsForm.css"; // Підключення файлу стилів
 
 const ContactsForm = () => {
@@ -33,7 +34,7 @@ const ContactsForm = () => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Name"
+          placeholder=" Name"
         />
         <input
           type="text"

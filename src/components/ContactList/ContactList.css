@@ -21,17 +21,3 @@
 .contact-actions {
     margin-left: 10px;
 }
-
-.contact-actions button {
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.contact-actions button:hover {
-    background-color: #c82333;
-}

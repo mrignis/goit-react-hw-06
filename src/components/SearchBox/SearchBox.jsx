@@ -1,9 +1,7 @@
 // SearchBox.jsx
-
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeFilter } from "../../redux/filtersSlice";
-import { useSelector } from "react-redux";
 import { selectContacts } from "../../redux/contactsSlice";
 import "./SearchBox.css"; // Підключення файлу стилів
 
@@ -14,10 +12,7 @@ const SearchBox = () => {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
-  };
-
-  const handleSearch = () => {
-    dispatch(changeFilter({ term: searchTerm, by: "name" }));
+    dispatch(changeFilter({ term: e.target.value, by: "name" }));
   };
 
   const filteredContacts = contacts.filter(
@@ -37,7 +32,6 @@ const SearchBox = () => {
           value={searchTerm}
           onChange={handleChange}
         />
-        <button onClick={handleSearch}>Search</button>
       </div>
       {shouldShowContacts && (
         <ul>

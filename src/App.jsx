@@ -1,5 +1,3 @@
-// App.jsx
-
 import React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/es/integration/react";
@@ -9,6 +7,7 @@ import "./App.css"; // Підключення файлу стилів
 import ContactsForm from "./components/ContactsForm/ContactsForm";
 import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
+import Contact from "./components/Contact/Contact"; // Додано імпорт
 
 function App() {
   return (
@@ -20,6 +19,8 @@ function App() {
             <ContactsForm />
             <SearchBox />
             <ContactList />
+            {/* Включення компонента Contact */}
+            <Contact />
           </div>
         </div>
       </PersistGate>

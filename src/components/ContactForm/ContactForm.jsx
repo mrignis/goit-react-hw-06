@@ -1,16 +1,13 @@
-// ContactsForm.jsx
-
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
-import { ImAccessibility } from "react-icons/im";
+import { nanoid } from "nanoid"; // Імпортуюмо функцію для генерації унікального id
 import "./ContactForm.css"; // Підключення файлу стилів
 
 const ContactsForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [id, setId] = useState(1); // Початкове значення лічильника
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,10 +16,10 @@ const ContactsForm = () => {
       alert("Please fill in all fields"); // Повідомлення про помилку
       return; // Відміна дії
     }
-    const nextId = id <= 200 ? id : 1;
+
+    const id = nanoid(); // Генеруємо унікальний id для контакту
 
     dispatch(addContact({ id, name, phone }));
-    setId(id + 1);
     setName("");
     setPhone("");
   };

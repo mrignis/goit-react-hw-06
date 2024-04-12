@@ -1,0 +1,14 @@
+/* SearchBox.module.css */
+
+.searchBox {
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.searchBox:focus {
+    outline: none;
+    border-color: #007bff;
+}

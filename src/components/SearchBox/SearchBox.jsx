@@ -1,10 +1,14 @@
-// SearchBox.jsx
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchValue } from "../redux/actions";
 import styles from "../SearchBox/SearchBox.module.css";
 
-function SearchBox({ value, onChange }) {
+function SearchBox() {
+  const dispatch = useDispatch();
+  const searchValue = useSelector((state) => state.search.value);
+
   const handleChange = (e) => {
-    onChange(e.target.value);
+    dispatch(setSearchValue(e.target.value));
   };
 
   return (
@@ -12,7 +16,7 @@ function SearchBox({ value, onChange }) {
       <input
         className={styles.searchBox}
         type="text"
-        value={value}
+        value={searchValue}
         onChange={handleChange}
         placeholder="Search..."
       />

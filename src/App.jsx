@@ -4,7 +4,7 @@ import { PersistGate } from "redux-persist/es/integration/react";
 import store, { persistor } from "./redux/store"; // Виправлено тут
 import "./App.css"; // Підключення файлу стилів
 
-import ContactsForm from "./components/ContactsForm/ContactForm";
+import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
 import Contact from "./components/Contact/Contact"; // Додано імпорт
@@ -16,7 +16,7 @@ function App() {
         <div className="app">
           <h1>Книга контактів</h1>
           <div className="container">
-            <ContactsForm />
+            <ContactForm />
             <SearchBox />
             <ContactList />
             {/* Включення компонента Contact */}

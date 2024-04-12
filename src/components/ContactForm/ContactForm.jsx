@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
 import { ImAccessibility } from "react-icons/im";
-import "./ContactsForm.css"; // Підключення файлу стилів
+import "./ContactForm.css"; // Підключення файлу стилів
 
 const ContactsForm = () => {
   const dispatch = useDispatch();

@@ -21,4 +21,16 @@ export const { addContact, deleteContact } = contactsSlice.actions;
 
 export const selectContacts = (state) => state.contacts.items;
 
+export const selectFilteredContacts = (state, nameFilter) => {
+  const contacts = state.contacts.items;
+
+  if (!nameFilter || nameFilter.trim() === "") {
+    return contacts;
+  }
+
+  return contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(nameFilter.toLowerCase())
+  );
+};
+
 export default contactsSlice.reducer;

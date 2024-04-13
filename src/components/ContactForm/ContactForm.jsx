@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
-import { nanoid } from "nanoid"; // Імпортуюмо функцію для генерації унікального id
-import "./ContactForm.css"; // Підключення файлу стилів
+import { nanoid } from "nanoid";
+import "./ContactForm.css";
 
-const ContactsForm = () => {
+const ContactForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Перевірка на заповнення полів ім'я та номер телефону
     if (!name || !phone) {
-      alert("Please fill in all fields"); // Повідомлення про помилку
-      return; // Відміна дії
+      alert("Please fill in all fields");
+      return;
     }
 
-    const id = nanoid(); // Генеруємо унікальний id для контакту
-
+    const id = nanoid();
     dispatch(addContact({ id, name, phone }));
     setName("");
     setPhone("");
@@ -45,4 +43,4 @@ const ContactsForm = () => {
   );
 };
 
-export default ContactsForm;
+export default ContactForm;
